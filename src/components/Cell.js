@@ -1,14 +1,21 @@
 import React from 'react';
 import styles from './Styles.css';
+var seal = require('../assets/seal.gif');
 
-const Cell = ({isAlive}) => {
+class Cell extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {col: props.col, row: props.row, isAlive: props.isAlive};
+  }
+  
+  render() {
+    var style = this.state.isAlive ? styles.aliveCell : styles.deadCell;
+    return (<div className={style}>[{this.state.col}][{this.state.row}]</div>);
+  }
 
-    var style = isAlive ? styles.aliveCell : styles.deadCell;
+  handleOnClick(params) {
+    console.log('Clicked!');
+  }
+}
 
-    return (
-      <div className={style}>
-      </div>
-    );
-  };
-
-  export default Cell;
+export default Cell;

@@ -1,32 +1,27 @@
 import React from 'react';
 import Cell from './Cell'
-import AV from './ArenaView'
+var _ = require('lodash');
 
-const CreateArena = (d) => {
-  var arr = [];
+const ArenaView = (arena) => {
+  console.log('arena: ' + arena); 
+  const table =  _.map(arena, (rows, i)=>{
+     console.log('rows: ' + rows); 
+    const cols = _.map(rows, (cell, j)=>{
+      console.log('cell: ' + cell + ' j:'+j);
+        return (<td><Cell col={i} row={j} isAlive={cell}/></td>);
+      });
 
-  for(var i = 0; i < d; i++) {
-    arr.push([]);
-    for(var j = 0; j < d; j++) {
-        arr[i].push(false);
-    }
-  } 
+      return (<tr>{cols}</tr>);
+    }); 
 
-  console.log('arr  :'+arr);
-  return arr;
-};
+     return (
+      <div className="overflow-x:auto;">
+        <table><tbody>{table}</tbody></table>
+      </div>); 
 
-const Life = () => {
-  const myArena = CreateArena(5);
-  
-  return (<AV arena={myArena}/>);
-};
-
-export default Life;
-/* 
-
-<div className="overflow-x:auto;">
+  return (
     <table>
+      <tbody>
       <tr>
         <td><Cell/></td>
         <td><Cell/></td>
@@ -63,5 +58,10 @@ export default Life;
         <td><Cell/></td>
         <td><Cell/></td>
       </tr>
+      </tbody>
     </table>
-    </div> */
+  );
+};
+
+
+export default ArenaView;
