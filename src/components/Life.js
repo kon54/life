@@ -3,12 +3,12 @@ import Cell from './Cell'
 import AV from './ArenaView'
 
 const CreateArena = (d) => {
-  var arr = [];
+  var arr = new Array(d);
 
-  for(var i = 0; i < d; i++) {
-    arr.push([]);
-    for(var j = 0; j < d; j++) {
-        arr[i].push(false);
+  for(var i = 0; i < arr.length; i++) {
+    arr[i] = new Array(d);
+    for(var j = 0; j < arr[i].length; j++) {
+        arr[i][j] = false;
     }
   } 
 

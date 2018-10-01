@@ -4,17 +4,18 @@ var _ = require('lodash');
 
 const ArenaView = (arena) => {
   console.log('arena: ' + arena); 
-  const table =  _.map(arena, (rows, i)=>{
-     console.log('rows: ' + rows); 
-    const cols = _.map(rows, (cell, j)=>{
-      console.log('cell: ' + cell + ' j:'+j);
-        return (<td><Cell col={i} row={j} isAlive={cell}/></td>);
-      });
 
-      return (<tr>{cols}</tr>);
-    }); 
+  const table = new Array(arena.length);
+  arena.array.forEach(element, i => {
+    var cols = [];
+    element.forEach((e, j) =>{
+      cols.push(<td><Cell col={j} row={i} isAlive={cell}/></td>);
+    });
 
-     return (
+    table.push(<tr>{cols}</tr>);
+  });
+
+  return (
       <div className="overflow-x:auto;">
         <table><tbody>{table}</tbody></table>
       </div>); 
