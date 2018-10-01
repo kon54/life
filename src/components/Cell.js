@@ -9,7 +9,7 @@ class Cell extends React.Component {
   }
   
   render() {
-    var style = this.state.isAlive ? styles.aliveCell : styles.deadCell;
+    var style = styles.aliveCell ;//this.state.isAlive ? styles.aliveCell : styles.deadCell;
     return (<div className={style}>[{this.state.col}][{this.state.row}]</div>);
   }
 

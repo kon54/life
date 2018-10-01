@@ -2,25 +2,28 @@ import React from 'react';
 import Cell from './Cell'
 var _ = require('lodash');
 
-const ArenaView = (arena) => {
-  console.log('arena: ' + arena); 
+function ArenaView  (props) {
+  var arena = props.arena;
+  console.log('arena: ' + arena.length); 
 
   const table = new Array(arena.length);
-  arena.array.forEach(element, i => {
-    var cols = [];
-    element.forEach((e, j) =>{
-      cols.push(<td><Cell col={j} row={i} isAlive={cell}/></td>);
-    });
+  for (var i=0; i < arena.length; i++)
+  {
+    var cols = new Array(arena.length);
+    for (var j=0; j < arena[i].length; j++)
+    {
+      cols[j] =(<td><Cell /></td>);
+    }
+    table[i] = (<tr>{cols}</tr>);
 
-    table.push(<tr>{cols}</tr>);
-  });
+  }
 
   return (
       <div className="overflow-x:auto;">
         <table><tbody>{table}</tbody></table>
       </div>); 
 
-  return (
+  /* return (
     <table>
       <tbody>
       <tr>
@@ -61,7 +64,7 @@ const ArenaView = (arena) => {
       </tr>
       </tbody>
     </table>
-  );
+  ); */
 };
 
 

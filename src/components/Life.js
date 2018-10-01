@@ -11,8 +11,6 @@ const CreateArena = (d) => {
         arr[i][j] = false;
     }
   } 
-
-  console.log('arr  :'+arr);
   return arr;
 };
 
