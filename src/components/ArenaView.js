@@ -12,7 +12,7 @@ function ArenaView  (props) {
     var cols = new Array(arena.length);
     for (var j=0; j < arena[i].length; j++)
     {
-      cols[j] =(<td><Cell /></td>);
+      cols[j] =(<td><Cell key={i.toString()+j.toString()} col={i} row={j} isAlive={arena[i][j]} /></td>);
     }
     table[i] = (<tr>{cols}</tr>);
 
@@ -21,50 +21,7 @@ function ArenaView  (props) {
   return (
       <div className="overflow-x:auto;">
         <table><tbody>{table}</tbody></table>
-      </div>); 
-
-  /* return (
-    <table>
-      <tbody>
-      <tr>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-      </tr>
-      <tr>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-      </tr>
-      <tr>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-        <td><Cell/></td>
-      </tr>
-      </tbody>
-    </table>
-  ); */
+      </div>);
 };
 
 

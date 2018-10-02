@@ -6,15 +6,16 @@ class Cell extends React.Component {
   constructor(props){
     super(props);
     this.state = {col: props.col, row: props.row, isAlive: props.isAlive};
+    this.handleClick = this.handleClick.bind(this)
   }
   
   render() {
-    var style = styles.aliveCell ;//this.state.isAlive ? styles.aliveCell : styles.deadCell;
-    return (<div className={style}>[{this.state.col}][{this.state.row}]</div>);
+    var style = this.state.isAlive ? styles.aliveCell : styles.deadCell;
+    return (<div className={style} onClick={this.handleClick}> </div>);
   }
 
-  handleOnClick(params) {
-    console.log('Clicked!');
+  handleClick() {
+    this.setState((state, props)=>({ isAlive: !state.isAlive }));
   }
 }
 
